@@ -1,0 +1,37 @@
+# Datasets and local data
+data/
+datasets/
+
+# Trained weights
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Exported models
+*.onnx
+*.plan
+*.engine
+
+# Training outputs
+checkpoints/
+experiments/
+artifacts/
+runs/
+wandb/
+
+# Build outputs
+build/
+install/
+log/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Local configuration
+.env
+.env.*
+!.env.example
