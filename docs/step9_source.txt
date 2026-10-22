@@ -1,0 +1,25 @@
+BEVFusion training source
+
+Original:
+Lidar_AI_Solution/CUDA-BEVFusion/bevfusion
+
+Parent repository revision:
+7c1623f234d5a9794fd862c9456f68f87ae7b900
+
+BEVFusion submodule revision:
+db75150717a9462cb60241e36ba28d65f6908607
+
+Working source inside Docker:
+/workspace/bevfusion
+
+Docker volume:
+bevfusion-source
+
+Docker container:
+bevfusion-train
+
+Docker base image:
+roadview-bevfusion:training
+
+Installation method:
+python setup.py develop

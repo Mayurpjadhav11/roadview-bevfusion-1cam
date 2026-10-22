@@ -1,0 +1,39 @@
+
+# Extend the verified PyTorch + MMCV image
+FROM roadview-bevfusion:deps
+
+# Compatibility packages for the legacy BEVFusion stack
+RUN python -m pip install --no-cache-dir \
+    "numpy==1.23.5" \
+    "Pillow==8.4.0" \
+    "Cython==0.29.36" \
+    "protobuf==3.20.3" \
+    "numba==0.56.4" \
+    "yapf==0.32.0"
+
+# Remaining BEVFusion training dependencies
+RUN python -m pip install --no-cache-dir \
+    "mpi4py==3.0.3" \
+    "torchpack" \
+    "nuscenes-devkit" \
+    "tqdm"
+
+# Restore compatibility-sensitive versions
+RUN python -m pip install --no-cache-dir \
+    "numpy==1.23.5" \
+    "protobuf==3.20.3" \
+    "yapf==0.32.0"
+
+# Verify versions
+RUN python -c "import torch, mmcv, mmdet, numpy, PIL, numba, mpi4py, torchpack; \
+    print('PyTorch:', torch.__version__); \
+    print('MMCV:', mmcv.__version__); \
+    print('MMDetection:', mmdet.__version__); \
+    print('NumPy:', numpy.__version__); \
+    print('Pillow:', PIL.__version__); \
+    print('Numba:', numba.__version__); \
+    print('MPI4Py:', mpi4py.__version__); \
+    print('Training dependencies imported successfully')"
+
+WORKDIR /workspace
+CMD ["/bin/bash"]

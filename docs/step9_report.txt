@@ -1,0 +1,10 @@
+BEVFusion Training Environment — Step 9
+Python: 3.8.10
+PyTorch: 1.10.2+cu113
+CUDA runtime: 11.3
+MMCV: 1.4.0
+MMDetection: 2.20.0
+GPU: NVIDIA GeForce RTX 2080 Ti
+Compute capability: (7, 5)
+BEVFusion installation: successful
+Furthest Point Sampling CUDA test: passed

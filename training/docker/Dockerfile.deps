@@ -1,0 +1,23 @@
+
+# Extend our tested PyTorch CUDA 11.3 image
+FROM roadview-bevfusion:cu113
+
+# Install MMCV-Full using its precompiled CUDA wheel.
+# Do not silently compile a different MMCV version.
+RUN python -m pip install --no-cache-dir \
+    --only-binary=mmcv-full \
+    "mmcv-full==1.4.0" \
+    -f https://download.openmmlab.com/mmcv/dist/cu113/torch1.10.0/index.html
+
+# Install the compatible MMDetection framework
+RUN python -m pip install --no-cache-dir \
+    "mmdet==2.20.0"
+
+# Verify the installed versions
+RUN python -c "import torch, mmcv, mmdet; \
+    print('PyTorch:', torch.__version__); \
+    print('MMCV:', mmcv.__version__); \
+    print('MMDetection:', mmdet.__version__)"
+
+WORKDIR /workspace
+CMD ["/bin/bash"]
