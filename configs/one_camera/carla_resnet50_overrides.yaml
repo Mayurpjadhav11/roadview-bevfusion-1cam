@@ -1,0 +1,21 @@
+object_classes:
+- car
+- truck
+- bus
+- motorcycle
+- bicycle
+- pedestrian
+model:
+  encoders:
+    camera:
+      backbone:
+        init_cfg: null
+  heads:
+    object:
+      num_classes: 6
+      test_cfg:
+        dataset: CARLA
+        nms_type: null
+data:
+  samples_per_gpu: 1
+  workers_per_gpu: 1

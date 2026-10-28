@@ -1,0 +1,32 @@
+# CARLA one-camera BEVFusion model overrides
+#
+# Base configuration:
+# configs/nuscenes/det/transfusion/secfpn/
+# camera+lidar/resnet50/convfuser.yaml
+#
+# Apply these settings after loading the base recursively.
+#
+# This file is not a standalone torchpack configuration.
+
+object_classes:
+  - car
+  - truck
+  - bus
+  - motorcycle
+  - bicycle
+  - pedestrian
+
+model:
+  encoders:
+    camera:
+      backbone:
+        # Prevent automatic online weight downloads during testing.
+        init_cfg: null
+
+  heads:
+    object:
+      num_classes: 6
+
+data:
+  samples_per_gpu: 1
+  workers_per_gpu: 1
